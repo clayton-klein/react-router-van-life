@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/VanDetail.css";
+import "../../../styles/VanDetail.css";
 
 export default function VanDetail() {
   const [van, setVan] = useState(null);
