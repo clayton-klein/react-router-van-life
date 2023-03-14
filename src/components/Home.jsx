@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/Home.css";
 import { Link } from "react-router-dom";
+import "../styles/Home.css";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
         Add adventure to your life by joining the #vanlife movement. Rent the
         perfect van to make your perfect road trip.
       </p>
-      <Link to="vans">Find your van</Link>
+      <Link to="/vans">Find your van</Link>
     </div>
   );
 }

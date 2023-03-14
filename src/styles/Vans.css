@@ -1,79 +1,82 @@
 .van-list-container {
-    padding-inline: 23px
+  padding-inline: 23px;
 }
 
 .van-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    gap: 34px;
-    margin-top: 57px;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  margin-top: 57px;
 }
 
 .van-tile a {
-    color: #161616;
-    text-decoration: none;    
+  color: #161616;
+  text-decoration: none;
 }
 
 .van-tile img {
-    max-width: 100%;
-    border-radius: 5px;
+  border-radius: 5px;
+  max-width: 100%;
 }
 
 .van-list-container button {
-    margin-right: 20px;
-    cursor: pointer;
+  cursor: pointer;
+  margin-right: 20px;
 }
 
 .van-type {
-    height: 34px;
-    padding: 6px 26px;
-    font-style: normal;
-    font-weight: 500;
-    border: none;
-    border-radius: 5px;
-    background-color: #FFEAD0;
-    color: #4D4D4D;
-    transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffead0;
+  border: none;
+  border-radius: 5px;
+  color: #4d4d4d;
+  font-style: normal;
+  font-weight: 500;
+  height: 34px;
+  padding: 6px 26px;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .van-type:hover {
-    color: #FFEAD0;
+  color: #ffead0;
 }
 
 .van-type:focus {
-    outline: transparent;
+  outline: transparent;
 }
 
 .van-type.selected {
-    color: #FFEAD0;
+  color: #ffead0;
 }
 
-.van-type.simple:hover, .van-type.simple.selected {
-    background-color: #E17654;
+.van-type.simple:hover,
+.van-type.simple.selected {
+  background-color: #e17654;
 }
 
-.van-type.rugged:hover, .van-type.rugged.selected {
-    background-color: #115E59;
+.van-type.rugged:hover,
+.van-type.rugged.selected {
+  background-color: #115e59;
 }
 
-.van-type.luxury:hover, .van-type.luxury.selected {
-    background-color: #161616;
+.van-type.luxury:hover,
+.van-type.luxury.selected {
+  background-color: #161616;
 }
 
 .van-type.clear-filters {
-    margin-left: -20px;
-    height: 34px;
-    padding: 6px 26px;
-    font-style: normal;
-    font-weight: 500;
-    border: none;
-    border-radius: 5px;
-    text-decoration: underline;
-    background-color: transparent;
-    color: #4D4D4D;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: #4d4d4d;
+  font-style: normal;
+  font-weight: 500;
+  height: 34px;
+  margin-left: -20px;
+  padding: 6px 26px;
+  text-decoration: underline;
 }
 
-i[class*='van-type-'] {
-    padding: 7px 14px;
+i[class*="van-type-"] {
+  padding: 7px 14px;
 }
