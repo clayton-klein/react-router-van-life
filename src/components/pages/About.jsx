@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/About.css";
-import bgImg from "../images/about-hero.png";
 import { Link } from "react-router-dom";
+import bgImg from "../../images/about-hero.png";
+import "../../styles/About.css";
 
 export default function About() {
   return (
