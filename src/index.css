@@ -15,8 +15,8 @@ body::-webkit-scrollbar {
 }
 
 body {
-    max-width: 80%;
-    margin: 0 auto;
+  margin: 0 auto;
+  max-width: 80%;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
