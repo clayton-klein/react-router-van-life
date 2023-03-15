@@ -2,7 +2,7 @@
 <br>
 <br>
 
-#Van Life
+<h1>#Van Life</h1>
 
 Projeto desenvolvido durante o curso "Learn React Router 6" oferecido pela plataforma Scrimba, segue o link:
 https://scrimba.com/learn/reactrouter6/
