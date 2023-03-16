@@ -24,7 +24,7 @@ export default function Vans() {
             <span>/day</span>
           </p>
         </div>
-        <i className={`van-type ${van.type} selected`}>{van.type}</i>
+        <i className={`van-type ${van.type}`}>{van.type}</i>
       </Link>
     </div>
   ));
