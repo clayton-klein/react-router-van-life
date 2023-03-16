@@ -1,26 +1,42 @@
 header {
-    align-items: center;
-    display: flex;
-    height: 110px;
-    padding-block: 10px;
-  }
-  
-  header .site-logo {
-    color: black;
-    font-size: 25px;
-    font-weight: 900;
-    margin-right: auto;
-    text-transform: uppercase;
-  }
-  
-  header a {
-    color: #4d4d4d;
-    font-weight: 600;
-    padding: 5px 20px;
+  align-items: center;
+  display: flex;
+  height: 110px;
+  padding-block: 10px;
+}
+
+header .site-logo {
+  color: black;
+  font-size: 25px;
+  font-weight: 900;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+header .site-logo:hover {
     text-decoration: none;
-  }
-  
-  header a:hover {
-    color: #161616;
-    text-decoration: underline;
-  }
+}
+
+header a {
+  color: #4d4d4d;
+  font-weight: 600;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #161616;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+}
+
+.link-active {
+  color: #161616;
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
