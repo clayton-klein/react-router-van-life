@@ -21,31 +21,14 @@ body {
   -ms-overflow-style: none;
 }
 
-header {
-  align-items: center;
+.site-wrapper {
+  min-height: 100vh;
   display: flex;
-  height: 110px;
-  padding-block: 10px;
+  flex-direction: column;
 }
 
-header .site-logo {
-  color: black;
-  font-size: 25px;
-  font-weight: 900;
-  margin-right: auto;
-  text-transform: uppercase;
-}
-
-header a {
-  color: #4d4d4d;
-  font-weight: 600;
-  padding: 5px 20px;
-  text-decoration: none;
-}
-
-header a:hover {
-  color: #161616;
-  text-decoration: underline;
+main {
+  margin-bottom: 84px;
 }
 
 .link-button {
