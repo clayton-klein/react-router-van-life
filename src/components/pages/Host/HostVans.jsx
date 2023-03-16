@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../../styles/HostVans.css";
 
-export default function HostVan() {
+export default function HostVans() {
   const [vans, setVans] = React.useState([]);
 
   React.useEffect(() => {

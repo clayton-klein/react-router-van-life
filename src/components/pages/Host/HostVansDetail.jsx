@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import "../../../styles/HostVanDetail.css";
 
-export default function HostVanDetail() {
+export default function HostVansDetail() {
   const { id } = useParams();
   const [currentVan, setCurrentVan] = React.useState(null);
 
