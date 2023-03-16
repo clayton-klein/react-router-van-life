@@ -18,7 +18,9 @@ export default function HostLayout() {
     <>
       <nav className="host-nav">
         <NavLink
-          to="/host"
+          to="." // we can use dot instead of "/host" to say "this
+                 // current route where the HostLayout is being rendered",
+                 // since we are already at "/host".
           end // it's necessary, otherwise Dashboard link would always be active and styled as such.
           style={({ isActive }) => (isActive ? activeLink : null)} // MUST use null instead of an empty string " " in this case, because an style object is being used, otherwise it won't work.
         >
@@ -26,21 +28,21 @@ export default function HostLayout() {
         </NavLink>
 
         <NavLink
-          to="/host/income"
+          to="income"
           style={({ isActive }) => (isActive ? activeLink : null)} // MUST use null instead of an empty string " " in this case, because an style object is being used, otherwise it won't work.
         >
           Income
         </NavLink>
 
         <NavLink
-          to="/host/vans"
+          to="vans"
           style={({ isActive }) => (isActive ? activeLink : null)} // MUST use null instead of an empty string " " in this case, because an style object is being used, otherwise it won't work.
         >
           Vans
         </NavLink>
 
         <NavLink
-          to="/host/reviews"
+          to="reviews"
           style={({ isActive }) => (isActive ? activeLink : null)} // MUST use null instead of an empty string " " in this case, because an style object is being used, otherwise it won't work.
         >
           Reviews
