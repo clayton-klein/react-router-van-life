@@ -1,0 +1,54 @@
+.host-nav {
+  display: flex;
+}
+
+.host-nav a {
+  color: #4d4d4d;
+  font-weight: 500;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+
+.host-nav a:hover {
+  color: #161616;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.host-van-link-wrapper {
+  color: unset;
+  text-decoration: unset;
+}
+
+.host-vans-list {
+  padding-inline: 26px;
+}
+
+.host-vans-title {
+  padding-inline: 26px;
+}
+
+.host-van-single {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  margin-bottom: 15px;
+  padding-block: 18px;
+  padding-left: 24px;
+}
+
+.host-van-single > img {
+  border-radius: 5px;
+  height: 70px;
+  margin-right: 17px;
+}
+
+.host-van-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-block: 10px;
+}
+
+.host-van-info p {
+  margin-block: 10px;
+}

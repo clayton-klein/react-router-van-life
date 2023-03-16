@@ -9,6 +9,8 @@ import Layout from "./components/Layout";
 import Reviews from "./components/pages/Host/Reviews";
 import VanDetail from "./components/pages/Vans/VanDetail";
 import Vans from "./components/pages/Vans/Vans";
+import HostVans from "./components/pages/Host/HostVans";
+import HostVanDetails from "./components/pages/Host/HostVanDetail";
 
 export default function App() {
   return (
@@ -28,6 +30,10 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
+            {/* the paths bellow are not the same as above, 
+                because the parent route is "host" and not "/" */}
+            <Route path="vans" element={<HostVans />} />
+            <Route path="vans/:id" element={<HostVanDetails />} />
           </Route>
         </Route>
       </Routes>
