@@ -11,4 +11,4 @@ Design no Figma: https://www.figma.com/file/igDA2NiMDhoaIIAqm5EnTq/%23VanLife?no
 
 <br>
 
-Obs: como o foco do curso foi aprender sobre react-router, então o HTML e CSS foi fornecido no decorrer das aulas.
+Obs: como o foco do curso foi aprender sobre react-router, então o HTML e CSS foram fornecidos no decorrer das aulas. Eu fiz apenas alguns pequenos ajustes em detalhes que na minha opinião ficariam melhores com outros estilos.
