@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import HostVanDetail from "./HostVansDetail";
+import HostVansDetail from "./HostVansDetail";
 
 export default function HostVansDetailLayout() {
   return (
     <div>
-      <HostVanDetail />
+      <HostVansDetail />
       <Outlet />
     </div>
   );
