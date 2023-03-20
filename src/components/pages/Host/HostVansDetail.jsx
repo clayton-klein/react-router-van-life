@@ -15,13 +15,12 @@ export default function HostVansDetail() {
   if (!currentVan) {
     return <h1>Loading...</h1>;
   }
-  
+
   return (
     <section>
       <Link
-        to=".." // to use this (go back one level)
-        relative="path" // we have to specify this, otherwise it will
-        // go one level on the layout hierarchy
+        to=".." // to use this (go back one level)...
+        relative="path" // we have to specify this, otherwise will go one level on the layout hierarchy
         className="back-button"
       >
         &larr; <span>Back to all vans</span>

@@ -17,9 +17,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* add index keyword to Home, because it has 
-          the same path as Layout, so itś necessary to do it
-          to render the component instead of using path="/" */}
+          {/* add index keyword to the Home component bellow because it has the same path as Layout, so it's necessary to do it to render the component instead of just using path="/" */}
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
