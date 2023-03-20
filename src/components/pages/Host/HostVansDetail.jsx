@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink, Outlet } from "react-router-dom";
 import "../../../styles/HostVansDetail.css";
 
 export default function HostVansDetail() {
@@ -15,6 +15,17 @@ export default function HostVansDetail() {
   if (!currentVan) {
     return <h1>Loading...</h1>;
   }
+
+  // style object to inline style the links
+  const activeLink = {
+    color: "#161616",
+    fontWeight: "bold",
+    marginBottom: "5px",
+    paddingBottom: "5px",
+    textDecoration: "underline",
+    textDecorationThickness: "2px",
+    textUnderlineOffset: "5px",
+  };
 
   return (
     <section>
@@ -37,6 +48,30 @@ export default function HostVansDetail() {
             <h4>${currentVan.price}/day</h4>
           </div>
         </div>
+        <nav className="host-van-detail-nav">
+          <NavLink
+            to="."
+            end
+            style={({ isActive }) => (isActive ? activeLink : null)}
+          >
+            Details
+          </NavLink>
+
+          <NavLink
+            to="pricing"
+            style={({ isActive }) => (isActive ? activeLink : null)}
+          >
+            Pricing
+          </NavLink>
+
+          <NavLink
+            to="photos"
+            style={({ isActive }) => (isActive ? activeLink : null)}
+          >
+            Photos
+          </NavLink>
+        </nav>
+        <Outlet context={{ currentVan }} />
       </div>
     </section>
   );

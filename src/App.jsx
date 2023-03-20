@@ -11,6 +11,9 @@ import VanDetail from "./components/pages/Vans/VanDetail";
 import Vans from "./components/pages/Vans/Vans";
 import HostVans from "./components/pages/Host/HostVans";
 import HostVansDetails from "./components/pages/Host/HostVansDetail";
+import HostVanInfo from "./components/pages/Host/HostVanInfo";
+import HostVanPhotos from "./components/pages/Host/HostVanPhotos";
+import HostVanPricing from "./components/pages/Host/HostVanPricing";
 
 export default function App() {
   return (
@@ -31,7 +34,11 @@ export default function App() {
             {/* the paths bellow are not the same as above, 
                 because the parent route is "host" and not "/" */}
             <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVansDetails />} />
+            <Route path="vans/:id" element={<HostVansDetails />}>
+              <Route index element={<HostVanInfo />} />
+              <Route path="photos" element={<HostVanPhotos />} />
+              <Route path="pricing" element={<HostVanPricing />} />
+            </Route>
           </Route>
         </Route>
       </Routes>
