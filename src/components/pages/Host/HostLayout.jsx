@@ -18,9 +18,7 @@ export default function HostLayout() {
     <>
       <nav className="host-nav">
         <NavLink
-          to="." // we can use dot instead of "/host" to say "this
-                 // current route where the HostLayout is being
-                 // rendered", since we are already at "/host".
+          to="." // we can use dot instead of "/host" to say "this current route where the HostLayout is being rendered", since we are already at "/host".
           end // it's necessary, otherwise Dashboard link would always be active and styled as such.
           style={({ isActive }) => (isActive ? activeLink : null)} // MUST use null instead of an empty string " " in this case, because an style object is being used, otherwise it won't work.
         >
