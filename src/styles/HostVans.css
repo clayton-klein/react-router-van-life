@@ -37,6 +37,10 @@
   padding-left: 24px;
 }
 
+.host-van-single:hover {
+  background-color:peachpuff;
+}
+
 .host-van-single > img {
   border-radius: 5px;
   height: 70px;

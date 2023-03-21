@@ -2,6 +2,16 @@
   padding-inline: 23px;
 }
 
+.van-list-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.van-list-filter-buttons a {
+  text-decoration: none;
+}
+
 .van-list {
   display: grid;
   gap: 34px 0px;
@@ -27,10 +37,9 @@
 }
 
 .van-type {
-  background-color: #ffead0;
   border: none;
   border-radius: 5px;
-  color: #4d4d4d;
+  color: #ffead0;
   font-style: normal;
   font-weight: 500;
   height: 34px;
@@ -38,31 +47,28 @@
   transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.van-type:hover {
-  color: #ffead0;
+.van-type:hover, .van-type.selected {
+  color: #4d4d4d;
 }
 
-.van-type:focus {
-  outline: transparent;
-}
-
-.van-type.selected {
-  color: #ffead0;
-}
-
-.van-type.simple:hover,
-.van-type.simple.selected {
+.van-type.simple {
   background-color: #e17654;
+  color: #ffead0;
 }
 
-.van-type.rugged:hover,
-.van-type.rugged.selected {
+.van-type.rugged {
   background-color: #115e59;
+  color: #ffead0;
 }
 
-.van-type.luxury:hover,
-.van-type.luxury.selected {
+.van-type.luxury {
   background-color: #161616;
+  color: #ffead0;
+}
+
+.van-type.simple:hover, .van-type.rugged:hover, .van-type.luxury:hover {
+  background-color: #ffead0;
+  color: #4d4d4d;
 }
 
 .van-type.clear-filters {
@@ -78,6 +84,6 @@
   text-decoration: underline;
 }
 
-i[class*="van-type-"] {
+i[class*="van-type"] {
   padding: 7px 14px;
 }
