@@ -1,0 +1,16 @@
+.not-found-container {
+    align-items: center;
+    color: crimson;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 26px;
+    height: 50vh;
+}
+
+.not-found-container .link-button {
+    background-color: #161616;
+    color: white;
+    margin-top: 1rem;
+    width: 50%;
+}
