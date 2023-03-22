@@ -13,7 +13,7 @@ export default function HostVans() {
 
   const hostVansEls = vans.map((van) => (
     <Link
-      to={`/host/vans/${van.id}`}
+      to={van.id} // the path is relative and the server already returns a string.
       key={van.id}
       className="host-van-link-wrapper"
     >
