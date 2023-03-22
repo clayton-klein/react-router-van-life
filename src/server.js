@@ -37,7 +37,7 @@ createServer({
       imageUrl:
         "https://assets.scrimba.com/advanced-react/react-router/reliable-red.png",
       type: "luxury",
-      hostId: "456",
+      hostId: "123",
     });
     server.create("van", {
       id: "4",
@@ -70,7 +70,7 @@ createServer({
       imageUrl:
         "https://assets.scrimba.com/advanced-react/react-router/green-wonder.png",
       type: "rugged",
-      hostId: "123",
+      hostId: "789",
     });
   },
 
