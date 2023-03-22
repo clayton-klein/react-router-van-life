@@ -10,6 +10,7 @@
 
 .van-detail-container .back-button {
   color: black;
+  margin-left: -27px;
   text-decoration: none;
 }
 
@@ -35,6 +36,7 @@
 
 .van-detail > i {
   align-self: flex-start;
+  margin-left: 14px;
 }
 
 .van-detail .van-price {
