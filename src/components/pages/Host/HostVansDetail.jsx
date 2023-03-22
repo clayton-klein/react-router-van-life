@@ -34,14 +34,14 @@ export default function HostVansDetail() {
         relative="path" // we have to specify this, otherwise will go one level on the layout hierarchy
         className="back-button"
       >
-        &larr; <span>Back to all vans</span>
+        &larr; <span>Back</span>
       </Link>
 
       <div className="host-van-detail-layout-container">
         <div className="host-van-detail">
           <img src={currentVan.imageUrl} />
           <div className="host-van-detail-info-text">
-            <i className={`van-type van-type-${currentVan.type}`}>
+            <i className={`van-type ${currentVan.type}`}>
               {currentVan.type}
             </i>
             <h3>{currentVan.name}</h3>
