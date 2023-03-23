@@ -1,21 +1,20 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import "../../../styles/Vans.css";
+import { getVans } from "../../../api.js";
+
+// the loader must be declared outside of the function that returns the component.
+export function loader() {
+  return getVans(); // a fetch function from de api.js file
+}
 
 export default function Vans() {
-  const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const vansData = useLoaderData();
+
   const typeFilter = searchParams.get("type"); // this gets the query from the URL.
 
-  useEffect(() => {
-    fetch("/api/vans") // get data from mirage.js server
-      .then((resp) => resp.json())
-      .then((data) => setVans(data.vans))
-      .catch((err) => console.error(err));
-  }, []);
-
-  let vansElements = vans
+  let vansElements = vansData
     .filter((van) => (typeFilter ? van.type.toLowerCase() === typeFilter : van))
     .map((van) => (
       <div className="van-tile" key={van.id}>
