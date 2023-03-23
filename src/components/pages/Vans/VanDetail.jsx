@@ -6,7 +6,7 @@ export default function VanDetail() {
   const [van, setVan] = useState(null);
   const params = useParams();
   const location = useLocation();
-  console.log(location);
+  
   useEffect(() => {
     fetch(`/api/vans/${params.id}`) // get data from mirage.js server
       .then((resp) => resp.json())
