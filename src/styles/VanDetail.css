@@ -1,11 +1,7 @@
 .van-detail-container {
+  margin-top: -3rem;
   max-width: 100%;
-  padding: 27px;
-}
-
-.van-detail img {
-  border-radius: 5px;
-  max-width: 100%;
+  padding: 0 27px 27px 27px;
 }
 
 .van-detail-container .back-button {
@@ -27,6 +23,8 @@
 .van-detail img {
   border-radius: 5px;
   margin-block: 47px;
+  margin-top: 2rem;
+  max-width: 100%;
 }
 
 .van-detail h2 {
