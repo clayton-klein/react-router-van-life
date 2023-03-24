@@ -84,16 +84,22 @@ createServer({
     });
 
     this.get("/vans/:id", (schema, request) => {
+      // return new Response(400, {}, {error: "Error fetching data"});
+
       const id = request.params.id;
       return schema.vans.find(id);
     });
 
     this.get("/host/vans", (schema, request) => {
+      // return new Response(400, {}, {error: "Error fetching data"});
+
       // Hard-code the hostId for now
       return schema.vans.where({ hostId: "123" });
     });
 
     this.get("/host/vans/:id", (schema, request) => {
+      // return new Response(400, {}, {error: "Error fetching data"});
+
       // Hard-code the hostId for now
       const id = request.params.id;
       return schema.vans.findBy({ id, hostId: "123" });
