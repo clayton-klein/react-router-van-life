@@ -30,8 +30,18 @@ header a:hover {
   text-decoration-thickness: 2px;
 }
 
+header nav {
+  display: flex;
+}
+
 header nav a {
   margin-left: 1.25rem;
+}
+
+header .login-icon {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
 }
 
 .link-active {
