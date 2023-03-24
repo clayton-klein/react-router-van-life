@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import "../styles/Header.css";
+import avatarIcon from "../images/avatar-icon.png";
 
 export default function Header() {
   return (
@@ -29,6 +30,10 @@ export default function Header() {
         >
           Vans
         </NavLink>
+
+        <Link to="login" className="login-link">
+          <img src={avatarIcon} className="login-icon" />
+        </Link>
       </nav>
     </header>
   );
