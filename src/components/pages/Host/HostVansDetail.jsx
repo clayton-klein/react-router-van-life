@@ -1,20 +1,23 @@
 import React from "react";
-import { useParams, Link, NavLink, Outlet } from "react-router-dom";
+import {
+  useParams,
+  Link,
+  NavLink,
+  Outlet,
+  useLoaderData,
+} from "react-router-dom";
+import { getHostVans } from "../../../api";
 import "../../../styles/HostVansDetail.css";
 
+// the loader must be declared outside of the function that returns the component.
+export function loader({ params }) {
+  return getHostVans(params.id);
+}
+
 export default function HostVansDetail() {
-  const { id } = useParams();
-  const [currentVan, setCurrentVan] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentVan(data.vans));
-  }, []);
-
-  if (!currentVan) {
-    return <h1>Loading...</h1>;
-  }
+  // const { id } = useParams();
+  // const [currentVan, setCurrentVan] = React.useState(null);
+  const currentVan = useLoaderData();
 
   // style object to inline style the links
   const activeLink = {
@@ -41,9 +44,7 @@ export default function HostVansDetail() {
         <div className="host-van-detail">
           <img src={currentVan.imageUrl} />
           <div className="host-van-detail-info-text">
-            <i className={`van-type ${currentVan.type}`}>
-              {currentVan.type}
-            </i>
+            <i className={`van-type ${currentVan.type}`}>{currentVan.type}</i>
             <h3>{currentVan.name}</h3>
             <h4>${currentVan.price}/day</h4>
           </div>

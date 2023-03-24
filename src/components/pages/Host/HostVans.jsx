@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { getHostVans } from "../../../api";
 import "../../../styles/HostVans.css";
 
-export default function HostVans() {
-  const [vans, setVans] = React.useState([]);
+// the loader must be declared outside of the function that returns the component.
+export function loader() {
+  return getHostVans();
+}
 
-  React.useEffect(() => {
-    fetch("/api/host/vans")
-      .then((res) => res.json())
-      .then((data) => setVans(data.vans));
-  }, []);
+export default function HostVans() {
+  const vans = useLoaderData();
 
   const hostVansEls = vans.map((van) => (
     <Link
@@ -31,11 +31,7 @@ export default function HostVans() {
     <section>
       <h1 className="host-vans-title">Your listed vans</h1>
       <div className="host-vans-list">
-        {vans.length > 0 ? (
           <section>{hostVansEls}</section>
-        ) : (
-          <h2>Loading...</h2>
-        )}
       </div>
     </section>
   );

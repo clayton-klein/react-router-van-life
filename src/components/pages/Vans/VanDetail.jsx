@@ -1,18 +1,15 @@
-import { useState, useEffect } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
+import { getVans } from "../../../api";
 import "../../../styles/VanDetail.css";
 
+// the loader must be declared outside of the function that returns the component.
+export function loader({ params }) {
+  return getVans(params.id); // a fetch function from de api.js file
+}
+
 export default function VanDetail() {
-  const [van, setVan] = useState(null);
-  const params = useParams();
   const location = useLocation();
-  
-  useEffect(() => {
-    fetch(`/api/vans/${params.id}`) // get data from mirage.js server
-      .then((resp) => resp.json())
-      .then((data) => setVan(data.vans))
-      .catch((err) => console.error(err));
-  }, [params.id]);
+  const van = useLoaderData(); // here we receive the data that come back from the loader
 
   return (
     <div className="van-detail-container">
@@ -29,20 +26,16 @@ export default function VanDetail() {
         </span>
       </Link>
       {/* van starts as null   */}
-      {van ? (
-        <div className="van-detail">
-          <img src={van.imageUrl} />
-          <i className={`van-type ${van.type} selected`}>{van.type}</i>
-          <h2>{van.name}</h2>
-          <p className="van-price">
-            <span>${van.price}</span>/day
-          </p>
-          <p>{van.description}</p>
-          <button className="link-button">Rent this van</button>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div className="van-detail">
+        <img src={van.imageUrl} />
+        <i className={`van-type ${van.type} selected`}>{van.type}</i>
+        <h2>{van.name}</h2>
+        <p className="van-price">
+          <span>${van.price}</span>/day
+        </p>
+        <p>{van.description}</p>
+        <button className="link-button">Rent this van</button>
+      </div>
     </div>
   );
 }
