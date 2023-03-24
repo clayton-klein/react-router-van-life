@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
-import Vans, { loader as vansLoader } from "./components/pages/Vans/Vans";
+import Vans, { loader as vansLoader } from "./components/pages/Vans/Vans"; //importing loader and changind name
 import Dashboard from "./components/pages/Host/Dashboard";
 import Income from "./components/pages/Host/Income";
 import Reviews from "./components/pages/Host/Reviews";
@@ -36,7 +36,7 @@ const router = createBrowserRouter(
         path="vans"
         element={<Vans />}
         errorElement={<Error />}
-        loader={vansLoader}
+        loader={vansLoader} // inserting loader here
       />
       <Route path="vans/:id" element={<VanDetail />} />
 
