@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useSearchParams, useLoaderData } from "react-router-dom";
-import "../../../styles/Vans.css";
 import { getVans } from "../../../api.js";
+import "../../../styles/Vans.css";
 
 // the loader must be declared outside of the function that returns the component.
 export function loader() {
@@ -10,7 +10,7 @@ export function loader() {
 
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const vansData = useLoaderData();
+  const vansData = useLoaderData(); // here we receive the data that come back from the loader
 
   const typeFilter = searchParams.get("type"); // this gets the query from the URL.
 
