@@ -1,64 +1,61 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import {
+  useLoaderData,
+  useActionData,
+  useNavigation,
+  Form,
+  redirect,
+} from "react-router-dom";
 import "../../styles/Login.css";
 import { loginUser } from "../../api";
 
+// an action or loader function can receive an object with 2 properties (request and params).
+// request = a fetch request instance being made to your app.
+// params = route params are parsed from dynamic segments and passed to your action/loader (through the URL). This is useful for figuring out which resource to mutate/load.
+
 export function loader({ request }) {
-  return new URL(request.url).searchParams.get("message");
+  return new URL(request.url).searchParams.get("message") || null;
+}
+
+export async function action({ request }) {
+  const formData = await request.formData(); // this is an async operation, that's why we need "await" here.
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const pathName =
+    new URL(request.url).searchParams.get("redirectTo") || "/host";
+
+  try {
+    await loginUser({ email, password }); // this is an async operation, that's why we need "await" here.
+
+    localStorage.setItem("loggedin", true);
+
+    return redirect(pathName); // this should redirect me to the /host route after logging in, but for some reason it's not working.
+  } catch (error) {
+    return error.message;
+  }
 }
 
 export default function Login() {
-  const [loginFormData, setLoginFormData] = React.useState({
-    email: "",
-    password: "",
-  });
-  const [status, setStatus] = React.useState("idle");
-  const [error, setError] = React.useState(null);
-
+  const navigation = useNavigation();
   const message = useLoaderData();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setStatus("submitting");
-    loginUser(loginFormData)
-      .then((res) => console.log(res))
-      .catch(err => setError(err))
-      .finally(() => setStatus("idle"))
-    setError(null);
-  }
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setLoginFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
+  const errorMessage = useActionData();
 
   return (
     <div className="login-container">
       {message && <h3 className="red">{message}</h3>}
-      {error && <h3 className="red">{error.message}</h3>}
+      {errorMessage && <h3 className="red">{errorMessage}</h3>}
+
       <h1>Sign in to your account</h1>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email address"
-          value={loginFormData.email}
-        />
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          placeholder="Password"
-          value={loginFormData.password}
-        />
-        <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Logging in..." : "Log in"}
+
+      {/* in this case the "replace" attribute/prop in the Form is used so the user don't come back to the login page, after being logged in, if he uses the broswer's back button */}
+      <Form method="POST" className="login-form" replace>
+        <input name="email" type="email" placeholder="Email address" />
+        <input name="password" type="password" placeholder="Password" />
+        {/* if the condition bellow is true the btn will be disabled */}
+        <button disabled={navigation.state === "submitting"}>
+          {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
-      </form>
+      </Form>
     </div>
   );
 }
