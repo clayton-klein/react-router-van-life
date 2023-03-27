@@ -23,7 +23,10 @@ import HostVanInfo from "./components/pages/Host/HostVanInfo";
 import HostVanPricing from "./components/pages/Host/HostVanPricing";
 import HostVanPhotos from "./components/pages/Host/HostVanPhotos";
 import NotFound from "./components/pages/NotFound";
-import Login, { loader as loginLoader } from "./components/pages/Login";
+import Login, {
+  action as loginAction,
+  loader as loginLoader,
+} from "./components/pages/Login";
 import Layout from "./components/Layout";
 import HostLayout from "./components/pages/Host/HostLayout";
 import Error from "./components/Error";
@@ -34,14 +37,19 @@ import "./server";
 // The "router" (or whatever you wanna call it), must be created outside of the return of the App component so we can use Loaders and Actions from the data API, this is the modern way of doing it currently (react-router v6.8).
 const router = createBrowserRouter(
   createRoutesFromElements(
-// Nav pages
+    // Nav pages
     <Route path="/" element={<Layout />}>
       {/* add index keyword to the Home component bellow because it has the same path as Layout, so it's necessary to do it to render the component instead of just using path="/" */}
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} loader={loginLoader} />
+      <Route
+        path="login"
+        element={<Login />}
+        action={loginAction}
+        loader={loginLoader}
+      />
 
-{/* Vans pages */}
+      {/* Vans pages */}
       <Route
         path="vans"
         element={<Vans />}
@@ -54,26 +62,26 @@ const router = createBrowserRouter(
         loader={vanDetailLoader} // inserting loader into the route
       />
 
-{/* Host pages */}
+      {/* Host pages */}
       <Route path="host" element={<HostLayout />}>
         {/* same thing as above here in Dashboard */}
         <Route
           index
           element={<Dashboard />}
           // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-          // loader={async () => await requireAuth()}
+          loader={async ({ request }) => await requireAuth(request)}
         />
         <Route
           path="income"
           element={<Income />}
           // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-          // loader={async () => await requireAuth()}
+          loader={async ({ request }) => await requireAuth(request)}
         />
         <Route
           path="reviews"
           element={<Reviews />}
           // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-          // loader={async () => await requireAuth()}
+          loader={async ({ request }) => await requireAuth(request)}
         />
         {/* the paths bellow are not the same as above, because the parent route is "host" and not "/" */}
         <Route
@@ -90,19 +98,19 @@ const router = createBrowserRouter(
             index
             element={<HostVanInfo />}
             // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-            // loader={async () => await requireAuth()}
+            loader={async ({ request }) => await requireAuth(request)}
           />
           <Route
             path="photos"
             element={<HostVanPhotos />}
             // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-            // loader={async () => await requireAuth()}
+            loader={async ({ request }) => await requireAuth(request)}
           />
           <Route
             path="pricing"
             element={<HostVanPricing />}
             // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-            // loader={async () => await requireAuth()}
+            loader={async ({ request }) => await requireAuth(request)}
           />
         </Route>
       </Route>
