@@ -5,9 +5,10 @@ import "../../../styles/HostVans.css";
 import {requireAuth} from "../../../utils";
 
 // the loader must be declared outside of the function that returns the component.
-export async function loader() {
+export async function loader({ request }) {
   // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
-  // await requireAuth();
+  await requireAuth(request);
+  
   return getHostVans();
 }
 
