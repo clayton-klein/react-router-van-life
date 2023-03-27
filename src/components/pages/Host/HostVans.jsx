@@ -2,9 +2,12 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { getHostVans } from "../../../api";
 import "../../../styles/HostVans.css";
+import {requireAuth} from "../../../utils";
 
 // the loader must be declared outside of the function that returns the component.
-export function loader() {
+export async function loader() {
+  // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+  // await requireAuth();
   return getHostVans();
 }
 
@@ -31,7 +34,7 @@ export default function HostVans() {
     <section>
       <h1 className="host-vans-title">Your listed vans</h1>
       <div className="host-vans-list">
-          <section>{hostVansEls}</section>
+        <section>{hostVansEls}</section>
       </div>
     </section>
   );

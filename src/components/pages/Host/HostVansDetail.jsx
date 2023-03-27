@@ -1,22 +1,18 @@
 import React from "react";
-import {
-  useParams,
-  Link,
-  NavLink,
-  Outlet,
-  useLoaderData,
-} from "react-router-dom";
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
+
 import { getHostVans } from "../../../api";
 import "../../../styles/HostVansDetail.css";
+import {requireAuth} from "../../../utils";
 
 // the loader must be declared outside of the function that returns the component.
-export function loader({ params }) {
+export async function loader({ params }) {
+  // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+  // await requireAuth();
   return getHostVans(params.id);
 }
 
 export default function HostVansDetail() {
-  // const { id } = useParams();
-  // const [currentVan, setCurrentVan] = React.useState(null);
   const currentVan = useLoaderData();
 
   // style object to inline style the links
