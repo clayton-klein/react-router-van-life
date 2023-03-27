@@ -23,22 +23,25 @@ import HostVanInfo from "./components/pages/Host/HostVanInfo";
 import HostVanPricing from "./components/pages/Host/HostVanPricing";
 import HostVanPhotos from "./components/pages/Host/HostVanPhotos";
 import NotFound from "./components/pages/NotFound";
-import Login from "./components/pages/Login";
+import Login, { loader as loginLoader } from "./components/pages/Login";
 import Layout from "./components/Layout";
 import HostLayout from "./components/pages/Host/HostLayout";
 import Error from "./components/Error";
+import { requireAuth } from "./utils";
 
 import "./server";
 
 // The "router" (or whatever you wanna call it), must be created outside of the return of the App component so we can use Loaders and Actions from the data API, this is the modern way of doing it currently (react-router v6.8).
 const router = createBrowserRouter(
   createRoutesFromElements(
+// Nav pages
     <Route path="/" element={<Layout />}>
       {/* add index keyword to the Home component bellow because it has the same path as Layout, so it's necessary to do it to render the component instead of just using path="/" */}
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} />
+      <Route path="login" element={<Login />} loader={loginLoader} />
 
+{/* Vans pages */}
       <Route
         path="vans"
         element={<Vans />}
@@ -51,31 +54,28 @@ const router = createBrowserRouter(
         loader={vanDetailLoader} // inserting loader into the route
       />
 
+{/* Host pages */}
       <Route path="host" element={<HostLayout />}>
         {/* same thing as above here in Dashboard */}
         <Route
           index
           element={<Dashboard />}
-          loader={async () => {
-            return null;
-          }}
+          // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+          // loader={async () => await requireAuth()}
         />
         <Route
           path="income"
           element={<Income />}
-          loader={async () => {
-            return null;
-          }}
+          // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+          // loader={async () => await requireAuth()}
         />
         <Route
           path="reviews"
           element={<Reviews />}
-          loader={async () => {
-            return null;
-          }}
+          // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+          // loader={async () => await requireAuth()}
         />
-        {/* the paths bellow are not the same as above, 
-                because the parent route is "host" and not "/" */}
+        {/* the paths bellow are not the same as above, because the parent route is "host" and not "/" */}
         <Route
           path="vans"
           element={<HostVans />}
@@ -89,29 +89,20 @@ const router = createBrowserRouter(
           <Route
             index
             element={<HostVanInfo />}
-            loader={async () => {
-              return null;
-            }}
+            // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+            // loader={async () => await requireAuth()}
           />
           <Route
             path="photos"
-            element={
-              <HostVanPhotos
-                loader={async () => {
-                  return null;
-                }}
-              />
-            }
+            element={<HostVanPhotos />}
+            // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+            // loader={async () => await requireAuth()}
           />
           <Route
             path="pricing"
-            element={
-              <HostVanPricing
-                loader={async () => {
-                  return null;
-                }}
-              />
-            }
+            element={<HostVanPricing />}
+            // the idea with the requireAuth function was to create a protected route, but for some reason it's not working :/
+            // loader={async () => await requireAuth()}
           />
         </Route>
       </Route>
@@ -122,5 +113,5 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
-  return <RouterProvider router={router} />; // the prop must be called "router", but not the value.
+  return <RouterProvider router={router} />; // the prop must be called "router", but the value doesn't.
 }
