@@ -17,7 +17,8 @@ export function loader({ request }) {
   return new URL(request.url).searchParams.get("message") || null;
 }
 
-export async function action({ request }) {
+export async function action(request) {
+  console.log(request.url);
   const formData = await request.formData(); // this is an async operation, that's why we need "await" here.
   const email = formData.get("email");
   const password = formData.get("password");
@@ -42,10 +43,10 @@ export default function Login() {
 
   return (
     <div className="login-container">
+      <h1>Sign in to your account</h1>
+
       {message && <h3 className="red">{message}</h3>}
       {errorMessage && <h3 className="red">{errorMessage}</h3>}
-
-      <h1>Sign in to your account</h1>
 
       {/* in this case the "replace" attribute/prop in the Form is used so the user don't come back to the login page, after being logged in, if he uses the broswer's back button */}
       <Form method="POST" className="login-form" replace>
